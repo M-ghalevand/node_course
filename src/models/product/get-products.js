@@ -1,7 +1,7 @@
 import client from "../../config/db.js";
 
-export const getUsers = async () => {
-    const query = 'SELECT * FROM users';
+export const getProducts = async () => {
+    const query = 'SELECT * FROM products';
     const res = await client.query(query);
     return res.rows;
 };

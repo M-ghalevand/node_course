@@ -1,10 +1,8 @@
-import {getProductsByUserId} from '../../models/product/index.js';
+import {getProducts} from '../../models/product/index.js';
 
-export const handleGetProductsByUser = async (req, res) => {
-    const parts = req.url.split('/');
-    const userId = parts[2];
+export const handleGetProducts = async (req, res) => {
     try {
-        const products = await getProductsByUserId(userId);
+        const products = await getProducts();
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.end(JSON.stringify(products));
     } catch (err) {
