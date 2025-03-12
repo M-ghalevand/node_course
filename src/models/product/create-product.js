@@ -1,4 +1,4 @@
-import client from "../../config/db.js";
+import {dbPool} from "../../config/db.js";
 
 export const createProduct = async (title, price, userId) => {
     const query = `
@@ -6,6 +6,6 @@ export const createProduct = async (title, price, userId) => {
         VALUES ($1, $2, $3) RETURNING *
     `;
     const values = [title, price, userId];
-    const res = await client.query(query, values);
+    const res = await dbPool.query(query, values);
     return res.rows[0];
 };
