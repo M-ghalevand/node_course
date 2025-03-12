@@ -1,12 +1,14 @@
-import {dbPool} from "../../config/db";
+import { dbPool } from '../../config/db';
 
 export const updateProduct = async (id, title, price) => {
-    const query = `
+  const query = `
         UPDATE products
         SET title = $1,
             price = $2
         WHERE id = $3 RETURNING *
     `;
-    const res = await dbPool.query(query, [title, price, id]);
-    return res.rows[0];
+
+  const res = await dbPool.query(query, [title, price, id]);
+
+  return res.rows[0];
 };
