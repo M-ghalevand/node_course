@@ -1,4 +1,4 @@
-import {dbPool} from "../../config/db.js";
+import {dbPool} from "../../config/db";
 
 export const getProductById = async (id) => {
     const query = 'SELECT * FROM products WHERE id = $1';

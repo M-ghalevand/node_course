@@ -1,10 +1,9 @@
-import {deleteUser} from '../../models/user/index.js';
+import {deleteProduct} from '../../models/product/index';
 
-export const handleDeleteUser = async (req, res) => {
+export const handleDeleteProduct = async (req, res) => {
     const id = req.url.split('/').pop();
     try {
-        console.log("=>(delete-user-route.js:7) id", id);
-        const product = await deleteUser(id);
+        const product = await deleteProduct(id);
         if (!product) {
             res.writeHead(404, {'Content-Type': 'application/json'});
             return res.end(JSON.stringify({error: 'Product not found'}));

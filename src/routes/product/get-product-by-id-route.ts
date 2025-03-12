@@ -1,4 +1,4 @@
-import {getProductById} from '../../models/product/index.js';
+import {getProductById} from '../../models/product/index';
 
 export const handleGetProductById = async (req, res) => {
     const id = req.url.split('/').pop();

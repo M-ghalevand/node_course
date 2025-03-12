@@ -1,4 +1,4 @@
-import {dbPool} from "../../config/db.js";
+import {dbPool} from "../../config/db";
 
 export const getUserById = async (id) => {
     const query = 'SELECT * FROM users WHERE id = $1';

@@ -1,4 +1,4 @@
-import { updateProduct } from '../../models/product/index.js';
+import { updateProduct } from '../../models/product/index';
 
 export const handleUpdateProduct = async (req, res) => {
     const id = req.url.split('/').pop();

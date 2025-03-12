@@ -1,4 +1,4 @@
-import { getUsers } from '../../models/user/index.js';
+import { getUsers } from '../../models/user/index';
 
 export const handleGetUsers = async (req, res) => {
     try {

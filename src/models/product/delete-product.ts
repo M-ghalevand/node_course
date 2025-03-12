@@ -1,4 +1,4 @@
-import {dbPool} from "../../config/db.js";
+import {dbPool} from "../../config/db";
 
 export const deleteProduct = async (id) => {
     const query = 'DELETE FROM products WHERE id = $1 RETURNING *';

@@ -1,4 +1,4 @@
-import { createUser } from '../../models/user/index.js';
+import { createUser } from '../../models/user/index';
 
 export const handleCreateUser = async (req, res) => {
     let body = '';

@@ -1,4 +1,4 @@
-import {createProduct} from '../../models/product/index.js';
+import {createProduct} from '../../models/product/index';
 
 export const handleCreateProduct = async (req, res) => {
     let body = '';

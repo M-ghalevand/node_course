@@ -1,4 +1,4 @@
-import { getUserById } from '../../models/user/index.js';
+import { getUserById } from '../../models/user/index';
 
 export const handleGetUserById = async (req, res) => {
     const id = req.url.split('/').pop();

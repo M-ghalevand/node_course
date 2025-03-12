@@ -1,12 +1,12 @@
 import http from 'http';
-import {handleCreateUser, handleGetUserById, handleGetUsers,handleDeleteUser} from './src/routes/user/index.js';
+import {handleCreateUser, handleGetUserById, handleGetUsers,handleDeleteUser} from './src/routes/user/index';
 import {
     handleCreateProduct,
     handleGetProductById,
     handleGetProducts,
     handleUpdateProduct,
     handleDeleteProduct
-} from './src/routes/product/index.js';
+} from './src/routes/product/index';
 
 
 const PORT = 3000;
@@ -15,7 +15,7 @@ const server = http.createServer(async (req, res) => {
     const {method, url} = req;
 
 
-    let normalizedUrl = url;
+    let normalizedUrl = url as string;
     const urlParts = normalizedUrl?.split('/').filter(part => part !== '')
 
     if (normalizedUrl.endsWith('/') && normalizedUrl.length > 1) {
