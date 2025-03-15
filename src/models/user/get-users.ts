@@ -1,4 +1,4 @@
-import { dbPool } from '../../config/db';
+import { dbPool } from '../../config/db.config';
 
 export const getUsers = async () => {
   const query = 'SELECT * FROM users';

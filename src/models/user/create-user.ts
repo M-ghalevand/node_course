@@ -1,4 +1,4 @@
-import { dbPool } from '../../config/db';
+import { dbPool } from '../../config/db.config';
 
 export const createUser = async (name, email) => {
   const query = 'INSERT INTO users (name, email) VALUES ($1, $2) RETURNING *';
