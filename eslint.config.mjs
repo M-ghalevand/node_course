@@ -1,6 +1,7 @@
 import { fixupConfigRules, fixupPluginRules } from '@eslint/compat';
 import { FlatCompat } from '@eslint/eslintrc';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
+import typescriptParser from '@typescript-eslint/parser';
 import _import from 'eslint-plugin-import';
 import prettier from 'eslint-plugin-prettier';
 import path from 'node:path';
@@ -26,9 +27,12 @@ export default [
       prettier: fixupPluginRules(prettier)
     },
     languageOptions: {
+      parser: typescriptParser,
       parserOptions: {
         project: './tsconfig.json',
-        sourceType: 'module'
+        tsconfigRootDir: path.resolve('./'),
+        sourceType: 'module',
+        ecmaVersion: 'latest'
       }
     },
     settings: {
@@ -51,17 +55,17 @@ export default [
       'no-console': 'error',
       'prefer-const': 'error',
 
-      "import/order": [
-        "warn",
+      'import/order': [
+        'warn',
         {
-          "newlines-between": "always",
-          "alphabetize": {
-            "order": "asc",
-            "caseInsensitive": true
+          'newlines-between': 'always',
+          alphabetize: {
+            order: 'asc',
+            caseInsensitive: true
           },
-          "groups": [
-            ["builtin", "external"],
-            ["internal", "parent", "sibling", "index"]
+          groups: [
+            ['builtin', 'external'],
+            ['internal', 'parent', 'sibling', 'index']
           ]
         }
       ],
