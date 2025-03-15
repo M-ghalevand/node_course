@@ -1,4 +1,4 @@
-import { dbPool } from '../../config/db';
+import { dbPool } from '../../config/db.config';
 
 export const updateProduct = async (id, title, price) => {
   const query = `
