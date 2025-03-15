@@ -2,7 +2,8 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 import app from './app';
-import { setupSwagger } from './docs/swagger';
+
+import { setupSwagger } from 'config';
 
 const PORT = process.env.PORT || 3000;
 
