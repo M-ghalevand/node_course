@@ -1,14 +1,15 @@
-import { z } from 'zod';
+import { productSchema } from 'schemas';
 
-export const updateProductValidator = z.object({
-  title: z
-    .string()
-    .min(3, { message: 'Title must be at least 3 characters long' })
-    .max(100, { message: 'Title must not exceed 100 characters' })
-    .nonempty({ message: 'Title is required' }),
-  price: z
-    .number()
-    .positive({ message: 'Price must be a positive number' })
-    .nonnegative({ message: 'Price cannot be negative' })
-    .min(0.01, { message: 'Price must be at least 0.01' })
-});
+export const updateProductValidator = productSchema
+  .pick({
+    title: true,
+    price: true
+  })
+  .extend({
+    title: productSchema.shape.title.min(1, {
+      message: 'Title cannot be empty when updating a product'
+    }),
+    price: productSchema.shape.price.nonnegative({
+      message: 'Price must be a positive number or zero when updating a product'
+    })
+  });
