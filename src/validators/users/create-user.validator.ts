@@ -1,10 +1,15 @@
-import { z } from 'zod';
+import { userSchema } from 'schemas';
 
-export const createUserValidator = z.object({
-  name: z
-    .string()
-    .min(2, { message: 'Name must be at least 2 characters long' })
-    .max(50, { message: 'Name must not exceed 50 characters' })
-    .nonempty({ message: 'Name is required' }),
-  email: z.string().email({ message: 'Invalid email address format' }).nonempty({ message: 'Email is required' })
-});
+export const createUserValidator = userSchema
+  .pick({
+    name: true,
+    email: true
+  })
+  .extend({
+    name: userSchema.shape.name
+      .min(1, { message: 'Name is required and cannot be empty' })
+      .max(100, { message: 'Name cannot exceed 100 characters' }),
+    email: userSchema.shape.email
+      .email({ message: 'Please provide a valid email address' })
+      .max(100, { message: 'Email cannot exceed 100 characters' })
+  });
