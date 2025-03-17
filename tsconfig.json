@@ -17,6 +17,7 @@
       "middlewares": ["./src/middlewares"],
       "controllers": ["./src/controllers"],
       "config": ["./src/config"],
+      "validators": ["./src/validators"],
     },
     "typeRoots": ["./node_modules/@types", "./src/types"]
   },
