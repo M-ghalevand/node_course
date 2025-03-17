@@ -6,13 +6,15 @@ import {
   updateProductController
 } from 'controllers';
 import { Router } from 'express';
+import { validate } from 'middlewares';
+import { createProductValidator, updateProductValidator } from 'validators';
 
 const productsRouter = Router();
 
 productsRouter.get('/', getProductsController);
-productsRouter.post('/', createProductController);
+productsRouter.post('/', validate(createProductValidator), createProductController);
 productsRouter.get('/:id', getProductByIdController);
 productsRouter.delete('/:id', deleteProductController);
-productsRouter.put('/:id', updateProductController);
+productsRouter.put('/:id', validate(updateProductValidator), updateProductController);
 
 export default productsRouter;
