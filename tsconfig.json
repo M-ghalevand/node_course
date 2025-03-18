@@ -21,7 +21,11 @@
       "schemas": ["./src/schemas"],
       "models": ["./src/models"],
     },
-    "typeRoots": ["./node_modules/@types", "./src/types"]
+    "typeRoots": [
+      "./src/types",
+      "./node_modules/@types",
+      "./node_modules/@prisma/client"
+    ]
   },
   "include": ["**/*.ts"],
   "exclude": ["node_modules", "dist"]
