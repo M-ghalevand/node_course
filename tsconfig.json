@@ -19,6 +19,7 @@
       "config": ["./src/config"],
       "validators": ["./src/validators"],
       "schemas": ["./src/schemas"],
+      "models": ["./src/models"],
     },
     "typeRoots": ["./node_modules/@types", "./src/types"]
   },
