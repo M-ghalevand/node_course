@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
-
-import { deleteUser } from '../../models/user';
+import { deleteUser } from 'models';
 
 export const deleteUserController = async (req: Request, res: Response) => {
   try {

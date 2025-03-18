@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
-
-import { getUsers } from '../../models/user';
+import { getUsers } from 'models';
 
 export const getAllUsersController = async (req: Request, res: Response) => {
   try {

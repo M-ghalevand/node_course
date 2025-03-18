@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
-
-import { deleteProduct } from '../../models/product';
+import { deleteProduct } from 'models';
 
 export const deleteProductController = async (req: Request, res: Response) => {
   try {

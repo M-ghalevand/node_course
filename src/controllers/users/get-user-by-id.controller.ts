@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
-
-import { getUserById } from '../../models/user';
+import { getUserById } from 'models';
 
 export const getUserByIdController = async (req: Request, res: Response) => {
   try {

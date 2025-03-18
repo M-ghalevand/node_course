@@ -1,7 +1,7 @@
 import { Response } from 'express';
+import { createProduct } from 'models';
 
 import { CreateProductRequest } from './create-product.types';
-import { createProduct } from '../../models/product';
 
 export const createProductController = async (req: CreateProductRequest, res: Response) => {
   try {
