@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import { getUserById } from 'models';
+import { getUserByIdModel } from 'models';
 
-export const getUserByIdController = async (req: Request, res: Response) => {
+export const getUserByIdController = async (req: Request<{ id: string }>, res: Response) => {
   try {
-    const user = await getUserById(req.params.id);
+    const user = await getUserByIdModel(Number(req.params.id));
 
     if (!user) {
       res.status(404).json({ message: 'User not found' });

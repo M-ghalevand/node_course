@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import { deleteUser } from 'models';
+import { deleteUserModel } from 'models';
 
-export const deleteUserController = async (req: Request, res: Response) => {
+export const deleteUserController = async (req: Request<{ id: string }>, res: Response) => {
   try {
-    const product = await deleteUser(req?.params?.id);
+    const product = await deleteUserModel(Number(req?.params?.id));
 
     if (!product) {
       res.status(404).json({ message: 'User not found' });
