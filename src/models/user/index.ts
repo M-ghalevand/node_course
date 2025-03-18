@@ -1,7 +1,7 @@
-export * from './create-user';
+export * from './create-user.model';
 
-export * from './delete-user';
+export * from './delete-user.model';
 
-export * from './get-user-by-id';
+export * from './get-user-by-id.model';
 
-export * from './get-users';
+export * from './get-users.model';
