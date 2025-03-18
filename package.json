@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "bun ./src/server.js",
-    "dev": "bun --hot ./src/server.js",
+    "build": "bun build ./src/server.ts --outdir ./out --target node",
+    "start": "bun ./src/server.ts",
+    "dev": "bun --hot ./src/server.ts",
     "seed": "bun ./prisma/seed.ts"
   },
   "keywords": [
