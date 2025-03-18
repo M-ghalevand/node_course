@@ -1,8 +1,9 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 
+import { CreateUserRequest } from './create-user.types';
 import { createUser } from '../../models/user';
 
-export const createUserController = async (req: Request, res: Response) => {
+export const createUserController = async (req: CreateUserRequest, res: Response) => {
   try {
     const { name, email } = req.body;
 
