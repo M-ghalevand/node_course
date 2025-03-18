@@ -1,8 +1,9 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 
+import { UpdateProductRequest } from './update-product.types';
 import { createUser } from '../../models/user';
 
-export const updateProductController = async (req: Request, res: Response) => {
+export const updateProductController = async (req: UpdateProductRequest, res: Response) => {
   try {
     const { title, price } = req.body;
 
