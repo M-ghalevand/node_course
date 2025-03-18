@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import { getProductById } from 'models';
 
-export const getProductByIdController = async (req: Request, res: Response) => {
+export const getProductByIdController = async (req: Request<{ id: string }>, res: Response) => {
   try {
-    const user = await getProductById(req.params.id);
+    const user = await getProductById(Number(req.params.id));
 
     if (!user) {
       res.status(404).json({ message: 'Product not found' });

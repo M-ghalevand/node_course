@@ -7,6 +7,6 @@ export const getProductsController = async (req: Request, res: Response) => {
 
     res.json(users);
   } catch (err) {
-    res.status(500).json({ message: String(err) }); // Use String constructor with `new`
+    res.status(500).json({ message: String(err) });
   }
 };

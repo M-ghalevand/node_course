@@ -1,13 +1,13 @@
 import { Response } from 'express';
-import { createUser } from 'models';
+import { updateProduct } from 'models';
 
-import { UpdateProductRequest } from './update-product.types';
+import { UpdateProductRequest } from './update-product.controller.types';
 
 export const updateProductController = async (req: UpdateProductRequest, res: Response) => {
   try {
     const { title, price } = req.body;
 
-    const product = await createUser(title, price);
+    const product = await updateProduct({ id: Number(req.params.id), title, price });
 
     if (!product) {
       res.status(404).json({ message: 'Product not found' });

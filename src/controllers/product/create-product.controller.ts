@@ -1,13 +1,13 @@
 import { Response } from 'express';
-import { createProduct } from 'models';
+import { createProductModel } from 'models';
 
-import { CreateProductRequest } from './create-product.types';
+import { CreateProductRequest } from './create-product.controller.types';
 
 export const createProductController = async (req: CreateProductRequest, res: Response) => {
   try {
     const { title, price, user_id } = req.body;
 
-    const product = await createProduct(title, price, user_id);
+    const product = await createProductModel({ title, price, user_id });
 
     res.status(201).json(product);
   } catch (err) {

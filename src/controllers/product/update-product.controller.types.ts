@@ -5,4 +5,4 @@ interface UpdateProductRequestBody {
   price: number;
 }
 
-export type UpdateProductRequest = Request<{}, {}, UpdateProductRequestBody>;
+export type UpdateProductRequest = Request<{ id: string }, {}, UpdateProductRequestBody>;
