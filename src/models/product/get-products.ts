@@ -1,9 +1,13 @@
-import { dbPool } from '../../config/db.config';
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 export const getProducts = async () => {
-  const query = 'SELECT * FROM products';
-
-  const res = await dbPool.query(query);
-
-  return res.rows;
+  try {
+    return await prisma.products.findMany();
+  } catch (err) {
+    throw err;
+  } finally {
+    await prisma.$disconnect();
+  }
 };

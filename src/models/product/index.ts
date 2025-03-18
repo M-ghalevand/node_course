@@ -1,4 +1,4 @@
-export * from './create-product';
+export * from './create-product.model';
 
 export * from './delete-product';
 

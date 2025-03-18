@@ -1,14 +1,25 @@
-import { dbPool } from '../../config/db.config';
+import { PrismaClient } from '@prisma/client';
 
-export const updateProduct = async (id, title, price) => {
-  const query = `
-        UPDATE products
-        SET title = $1,
-            price = $2
-        WHERE id = $3 RETURNING *
-    `;
+import { UpdateProductInput } from './update-product.types';
 
-  const res = await dbPool.query(query, [title, price, id]);
+const prisma = new PrismaClient();
 
-  return res.rows[0];
+export const updateProduct = async ({ id, title, price }: UpdateProductInput) => {
+  try {
+    const updatedProduct = await prisma.products.update({
+      where: {
+        id
+      },
+      data: {
+        title,
+        price
+      }
+    });
+
+    return updatedProduct;
+  } catch (err) {
+    throw err;
+  } finally {
+    await prisma.$disconnect();
+  }
 };

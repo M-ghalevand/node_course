@@ -1,9 +1,17 @@
-import { dbPool } from '../../config/db.config';
+import { PrismaClient } from '@prisma/client';
 
-export const deleteProduct = async (id) => {
-  const query = 'DELETE FROM products WHERE id = $1 RETURNING *';
+const prisma = new PrismaClient();
 
-  const res = await dbPool.query(query, [id]);
-
-  return res.rows[0];
+export const deleteProduct = async (id: number) => {
+  try {
+    return await prisma.products.delete({
+      where: {
+        id
+      }
+    });
+  } catch (err) {
+    throw err;
+  } finally {
+    await prisma.$disconnect();
+  }
 };

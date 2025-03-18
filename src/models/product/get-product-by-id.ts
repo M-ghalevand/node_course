@@ -1,9 +1,17 @@
-import { dbPool } from '../../config/db.config';
+import { PrismaClient } from '@prisma/client';
 
-export const getProductById = async (id) => {
-  const query = 'SELECT * FROM products WHERE id = $1';
+const prisma = new PrismaClient();
 
-  const res = await dbPool.query(query, [id]);
-
-  return res.rows[0];
+export const getProductById = async (id: number) => {
+  try {
+    return await prisma.products.findUnique({
+      where: {
+        id
+      }
+    });
+  } catch (err) {
+    throw err;
+  } finally {
+    await prisma.$disconnect();
+  }
 };
