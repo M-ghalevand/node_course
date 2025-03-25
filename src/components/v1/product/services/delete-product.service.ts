@@ -1,3 +1,5 @@
+import { CustomError } from 'utils';
+
 import { deleteProductModel } from '../models';
 
 export const deleteProductService = async (id: number) => {
@@ -5,11 +7,11 @@ export const deleteProductService = async (id: number) => {
     const product = await deleteProductModel(id);
 
     if (!product) {
-      return { message: 'Product not found', status: 404 };
+      throw new CustomError('Product not found', 404);
     }
 
     return { message: `Product Id ${id} deleted successfully`, status: 200 };
   } catch (err) {
-    return { error: (err as Error).message, status: 500 };
+    throw new CustomError(String(err), 400);
   }
 };

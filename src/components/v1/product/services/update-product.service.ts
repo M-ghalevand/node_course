@@ -1,4 +1,5 @@
 import { Products } from '@prisma/client';
+import { CustomError } from 'utils';
 
 import { updateProductModel } from '../models';
 
@@ -9,11 +10,11 @@ export const updateProductService = async (body: Pick<Products, 'title' | 'price
     const product = await updateProductModel({ id, title, price });
 
     if (!product) {
-      return { message: 'Product not found', status: 404 };
+      throw new CustomError('Product not found', 404);
     }
 
     return product;
   } catch (err) {
-    return { error: err instanceof Error ? err.message : 'An unknown error occurred', status: 500 };
+    throw new CustomError(String(err), 400);
   }
 };

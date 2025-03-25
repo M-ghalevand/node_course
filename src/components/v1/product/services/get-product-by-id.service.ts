@@ -1,3 +1,5 @@
+import { CustomError } from 'utils';
+
 import { getProductByIdModel } from '../models';
 
 export const getProductByIdService = async (id: number) => {
@@ -5,11 +7,11 @@ export const getProductByIdService = async (id: number) => {
     const user = await getProductByIdModel(id);
 
     if (!user) {
-      return { message: 'Product not found', status: 404 };
+      throw new CustomError('Product not found', 404);
     }
 
     return user;
   } catch (err) {
-    return { error: err instanceof Error ? err.message : 'An unknown error occurred', status: 500 };
+    throw new CustomError(String(err), 400);
   }
 };
