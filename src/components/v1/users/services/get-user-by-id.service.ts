@@ -7,11 +7,13 @@ export const getUserByIdService = async (id: number) => {
     const user = await getUserByIdModel(id);
 
     if (!user) {
-      throw new CustomError('User not found', 400);
+      throw new CustomError('User not found', 404);
     }
 
     return user;
-  } catch (err) {
-    throw new CustomError(String(err), 400);
+  } catch (error) {
+    const err = error as CustomError;
+
+    throw new CustomError(String(err), err?.statusCode || 400);
   }
 };

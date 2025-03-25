@@ -11,7 +11,3 @@ export const errorMiddleware = (err: ErrorWithStatus, _req: Request, res: Respon
     statusCode: statusCode
   });
 };
-
-interface ErrorWithStatus extends Error {
-  statusCode?: number;
-}

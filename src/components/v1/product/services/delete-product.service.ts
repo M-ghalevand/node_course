@@ -11,7 +11,9 @@ export const deleteProductService = async (id: number) => {
     }
 
     return { message: `Product Id ${id} deleted successfully`, status: 200 };
-  } catch (err) {
-    throw new CustomError(String(err), 400);
+  } catch (error) {
+    const err = error as CustomError;
+
+    throw new CustomError(String(err), err?.statusCode || 400);
   }
 };

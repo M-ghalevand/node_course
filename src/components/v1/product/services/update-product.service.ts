@@ -14,7 +14,9 @@ export const updateProductService = async (body: Pick<Products, 'title' | 'price
     }
 
     return product;
-  } catch (err) {
-    throw new CustomError(String(err), 400);
+  } catch (error) {
+    const err = error as CustomError;
+
+    throw new CustomError(String(err), err?.statusCode || 400);
   }
 };
