@@ -19,7 +19,6 @@
     "prisma:push": "prisma db push",
     "prisma:seed": "node ./prisma/seed.js",
     "prisma:format": "prisma format"
-
   },
   "keywords": [
     "node",
@@ -30,11 +29,18 @@
   "description": "",
   "dependencies": {
     "@prisma/client": "^6.5.0",
+    "@types/bcrypt": "^5.0.2",
+    "@types/passport": "^1.0.17",
+    "@types/passport-local": "^1.0.38",
     "@types/pg": "^8.11.11",
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/swagger-ui-express": "^4.1.8",
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.7",
     "nodemon": "^3.1.9",
+    "passport": "^0.7.0",
+    "passport-github": "^1.1.0",
+    "passport-local": "^1.0.0",
     "pg": "^8.13.3",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
