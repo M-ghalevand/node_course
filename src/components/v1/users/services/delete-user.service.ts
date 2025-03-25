@@ -1,3 +1,5 @@
+import { CustomError } from 'utils';
+
 import { deleteUserModel } from '../models';
 
 export const deleteUserService = async (id: number) => {
@@ -5,11 +7,11 @@ export const deleteUserService = async (id: number) => {
     const product = await deleteUserModel(id);
 
     if (!product) {
-      return { message: 'User not found' };
+      throw new CustomError('User not found', 400);
     }
 
     return { message: `User Id ${id} deleted successfully` };
   } catch (err) {
-    return { error: (err as Error).message };
+    throw new CustomError(String(err), 400);
   }
 };

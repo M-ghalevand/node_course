@@ -1,3 +1,5 @@
+import { CustomError } from 'utils';
+
 import { getUserByIdModel } from '../models';
 
 export const getUserByIdService = async (id: number) => {
@@ -5,11 +7,11 @@ export const getUserByIdService = async (id: number) => {
     const user = await getUserByIdModel(id);
 
     if (!user) {
-      return { message: 'User not found', status: 404 };
+      throw new CustomError('User not found', 400);
     }
 
     return user;
   } catch (err) {
-    return { message: err instanceof Error ? err.message : 'An unknown error occurred', status: 500 };
+    throw new CustomError(String(err), 400);
   }
 };

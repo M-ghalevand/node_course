@@ -1,4 +1,5 @@
 import { User } from '@prisma/client';
+import { CustomError } from 'utils';
 
 import { createUserModel } from '../models';
 
@@ -8,6 +9,6 @@ export const createUserService = async (body: Pick<User, 'email' | 'name'>) => {
 
     return await createUserModel({ name, email });
   } catch (err) {
-    return { error: err instanceof Error ? err.message : 'An unknown error occurred' };
+    throw new CustomError(String(err), 400);
   }
 };
