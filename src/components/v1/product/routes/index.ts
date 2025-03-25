@@ -1,13 +1,14 @@
+import { Router } from 'express';
+import { validate } from 'middlewares';
+import { createProductValidator, updateProductValidator } from 'validators';
+
 import {
   createProductController,
   deleteProductController,
   getProductByIdController,
   getProductsController,
   updateProductController
-} from 'controllers';
-import { Router } from 'express';
-import { validate } from 'middlewares';
-import { createProductValidator, updateProductValidator } from 'validators';
+} from '../controllers';
 
 const productsRouter = Router();
 
