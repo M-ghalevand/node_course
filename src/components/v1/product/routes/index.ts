@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { validate } from 'middlewares';
+import { validateMiddleware } from 'middlewares';
 
 import {
   createProductController,
@@ -13,9 +13,9 @@ import { createProductValidator, updateProductValidator } from '../validators';
 const productsRouter = Router();
 
 productsRouter.get('/', getProductsController);
-productsRouter.post('/', validate(createProductValidator), createProductController);
+productsRouter.post('/', validateMiddleware(createProductValidator), createProductController);
 productsRouter.get('/:id', getProductByIdController);
 productsRouter.delete('/:id', deleteProductController);
-productsRouter.put('/:id', validate(updateProductValidator), updateProductController);
+productsRouter.put('/:id', validateMiddleware(updateProductValidator), updateProductController);
 
 export default productsRouter;
