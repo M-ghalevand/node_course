@@ -1,16 +1,9 @@
-import { Response } from 'express';
-import { createProductModel } from 'models';
+import { Request, Response } from 'express';
 
-import { CreateProductRequest } from './create-product.controller.types';
+import { createProduct } from './product.service';
 
-export const createProductController = async (req: CreateProductRequest, res: Response) => {
-  try {
-    const { title, price, user_id } = req.body;
+export const createProductController = async (req: Request, res: Response) => {
+  const result = await createProduct(req.body);
 
-    const product = await createProductModel({ title, price, user_id });
-
-    res.status(201).json(product);
-  } catch (err) {
-    res.status(500).json({ error: err instanceof Error ? err.message : 'An unknown error occurred' });
-  }
+  res.json(result);
 };

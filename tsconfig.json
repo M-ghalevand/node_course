@@ -19,7 +19,8 @@
       "config": ["./src/config"],
       "validators": ["./src/validators"],
       "schemas": ["./src/schemas"],
-      "models": ["./src/models"]
+      "models": ["./src/models"],
+      "db": ["./src/db"]
     },
     "typeRoots": [
       "./src/types",
