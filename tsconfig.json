@@ -20,7 +20,8 @@
       "validators": ["./src/validators"],
       "schemas": ["./src/schemas"],
       "models": ["./src/models"],
-      "db": ["./src/db"]
+      "db": ["./src/db"],
+      "utils": ["./src/utils"]
     },
     "typeRoots": [
       "./src/types",
