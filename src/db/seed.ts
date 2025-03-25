@@ -38,7 +38,7 @@ async function seed() {
       products.push({ title, price, user_id: userId });
     }
 
-    console.log('products', products);
+    console.log('products', products); // eslint-disable-line no-console
 
     const createdProducts = await prisma.products.createMany({
       data: products
