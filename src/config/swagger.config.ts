@@ -2,24 +2,24 @@ import { Express } from 'express';
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 
-const swaggerSpec = swaggerJsdoc({
+const swaggerSpecV1 = swaggerJsdoc({
   definition: {
     openapi: '3.0.0',
     info: {
-      title: 'node course',
+      title: 'node course Version 1',
       version: '1.0.0',
       description: 'API documentation for the node course'
     },
     servers: [
       {
-        url: 'http://localhost:3000',
+        url: 'http://localhost:3000/api/v1',
         description: 'Development server'
       }
     ]
   },
-  apis: ['./src/controllers/*.ts']
+  apis: ['./src/components/v1/*/controllers/*.ts']
 });
 
 export function setupSwagger(app: Express) {
-  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+  app.use('/api-docs/v1', swaggerUi.serve, swaggerUi.setup(swaggerSpecV1));
 }
