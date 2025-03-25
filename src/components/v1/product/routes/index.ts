@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import { validate } from 'middlewares';
-import { createProductValidator, updateProductValidator } from 'validators';
 
 import {
   createProductController,
@@ -9,6 +8,7 @@ import {
   getProductsController,
   updateProductController
 } from '../controllers';
+import { createProductValidator, updateProductValidator } from '../validators';
 
 const productsRouter = Router();
 

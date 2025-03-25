@@ -3,12 +3,23 @@
   "version": "0.0.1",
   "main": "server.js",
   "type": "module",
+  "prisma": {
+    "schema": "./src/db/schema.prisma"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "bun build ./src/server.ts --outdir ./out --target node",
     "start": "bun ./src/server.ts",
     "dev": "bun --hot ./src/server.ts",
-    "seed": "bun ./prisma/seed.ts"
+    "prisma:generate": "prisma generate",
+    "prisma:studio": "prisma studio",
+    "prisma:migrate:dev": "prisma migrate dev",
+    "prisma:migrate:prod": "prisma migrate deploy",
+    "prisma:reset": "prisma migrate reset --force",
+    "prisma:push": "prisma db push",
+    "prisma:seed": "node ./prisma/seed.js",
+    "prisma:format": "prisma format"
+
   },
   "keywords": [
     "node",
