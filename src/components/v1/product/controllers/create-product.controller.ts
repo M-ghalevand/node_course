@@ -6,5 +6,5 @@ import { createProductService } from '../services';
 export const createProductController = async (req: Request<{}, {}, Pick<Products, 'title' | 'price' | 'user_id'>>, res: Response) => {
   const result = await createProductService(req.body);
 
-  res.end(result);
+  res.json(result);
 };
