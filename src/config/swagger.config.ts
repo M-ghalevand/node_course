@@ -21,5 +21,5 @@ const swaggerSpecV1 = swaggerJsdoc({
 });
 
 export function setupSwagger(app: Express) {
-  app.use('/api-docs/v1', swaggerUi.serve, swaggerUi.setup(swaggerSpecV1));
+  app.use('/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecV1));
 }

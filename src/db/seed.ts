@@ -8,23 +8,27 @@ async function seed() {
     await prisma.user.deleteMany();
 
     const users = [
-      { name: 'Alice', email: 'alice@example.com' },
-      { name: 'Bob', email: 'bob@example.com' },
-      { name: 'Charlie', email: 'charlie@example.com' },
-      { name: 'David', email: 'david@example.com' },
-      { name: 'Emma', email: 'emma@example.com' },
-      { name: 'Frank', email: 'frank@example.com' },
-      { name: 'Grace', email: 'grace@example.com' },
-      { name: 'Hannah', email: 'hannah@example.com' },
-      { name: 'Isaac', email: 'isaac@example.com' },
-      { name: 'Jack', email: 'jack@example.com' }
+      { name: 'Alice', email: 'alice@example.com', password: 'password123' },
+      { name: 'Bob', email: 'bob@example.com', password: 'password123' },
+      { name: 'Charlie', email: 'charlie@example.com', password: 'password123' },
+      { name: 'David', email: 'david@example.com', password: 'password123' },
+      { name: 'Emma', email: 'emma@example.com', password: 'password123' },
+      { name: 'Frank', email: 'frank@example.com', password: 'password123' },
+      { name: 'Grace', email: 'grace@example.com', password: 'password123' },
+      { name: 'Hannah', email: 'hannah@example.com', password: 'password123' },
+      { name: 'Isaac', email: 'isaac@example.com', password: 'password123' },
+      { name: 'Jack', email: 'jack@example.com', password: 'password123' }
     ];
 
-    const createdUsers = await prisma.user.createMany({
-      data: users
-    });
+    const createdUsers = [];
+    for (const user of users) {
+      const createdUser = await prisma.user.create({
+        data: user
+      });
+      createdUsers.push(createdUser);
+    }
 
-    console.log(`${createdUsers.count} users inserted.`); // eslint-disable-line no-console
+    console.log(`${createdUsers.length} users inserted.`); // eslint-disable-line no-console
 
     const products = [];
 
@@ -33,8 +37,7 @@ async function seed() {
 
       const price = i * 10;
 
-      const userId = (i % 5) + 1;
-
+      const userId = createdUsers[i % createdUsers.length].id;
       products.push({ title, price, user_id: userId });
     }
 

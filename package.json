@@ -16,8 +16,9 @@
     "prisma:migrate:dev": "prisma migrate dev",
     "prisma:migrate:prod": "prisma migrate deploy",
     "prisma:reset": "prisma migrate reset --force",
+    "prisma:pull": "prisma db pull --force",
     "prisma:push": "prisma db push",
-    "prisma:seed": "node ./prisma/seed.js",
+    "prisma:seed": "bun src/db/seed.ts",
     "prisma:format": "prisma format"
   },
   "keywords": [
