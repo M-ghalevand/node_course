@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 
-import { CreateUserModelInput } from './create-user.model.types';
+import { CreateUserModelInput } from './types';
 const prisma = new PrismaClient();
 
 export const createUserModel = async ({ name, email }: CreateUserModelInput) => {
