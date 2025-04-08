@@ -7,3 +7,10 @@ interface CreateProductRequestBody {
 }
 
 export type CreateProductRequest = Request<{}, {}, CreateProductRequestBody>;
+
+interface UpdateProductRequestBody {
+  title: string;
+  price: number;
+}
+
+export type UpdateProductRequest = Request<{ id: string }, {}, UpdateProductRequestBody>;

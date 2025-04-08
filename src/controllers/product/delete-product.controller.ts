@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import { deleteProduct } from 'models';
+import { deleteProductModel } from 'models';
 
 export const deleteProductController = async (req: Request<{ id: string }>, res: Response) => {
   try {
-    const product = await deleteProduct(Number(req?.params?.id));
+    const product = await deleteProductModel(Number(req?.params?.id));
 
     if (!product) {
       res.status(404).json({ message: 'Product not found' });

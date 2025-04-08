@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import { getProducts } from 'models';
+import { getProductsModel } from 'models';
 
 export const getProductsController = async (req: Request, res: Response) => {
   try {
-    const users = await getProducts();
+    const users = await getProductsModel();
 
     res.json(users);
   } catch (err) {
