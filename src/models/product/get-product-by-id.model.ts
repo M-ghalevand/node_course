@@ -2,9 +2,13 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export const getProducts = async () => {
+export const getProductByIdModel = async (id: number) => {
   try {
-    return await prisma.products.findMany();
+    return await prisma.products.findUnique({
+      where: {
+        id
+      }
+    });
   } catch (err) {
     throw err;
   } finally {

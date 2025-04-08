@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 
-import { CreateProductModelInput } from './create-product.model.types';
+import { CreateProductModelInput } from './types';
 const prisma = new PrismaClient();
 
 export const createProductModel = async ({ title, price, user_id }: CreateProductModelInput) => {

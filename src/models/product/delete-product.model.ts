@@ -2,9 +2,9 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export const getProductById = async (id: number) => {
+export const deleteProductModel = async (id: number) => {
   try {
-    return await prisma.products.findUnique({
+    return await prisma.products.delete({
       where: {
         id
       }

@@ -1,10 +1,10 @@
 import { PrismaClient } from '@prisma/client';
 
-import { UpdateProductInput } from './update-product.types';
+import { UpdateProductInput } from './types';
 
 const prisma = new PrismaClient();
 
-export const updateProduct = async ({ id, title, price }: UpdateProductInput) => {
+export const updateProductModel = async ({ id, title, price }: UpdateProductInput) => {
   try {
     const updatedProduct = await prisma.products.update({
       where: {

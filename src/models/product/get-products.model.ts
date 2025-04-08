@@ -2,13 +2,9 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export const deleteProduct = async (id: number) => {
+export const getProductsModel = async () => {
   try {
-    return await prisma.products.delete({
-      where: {
-        id
-      }
-    });
+    return await prisma.products.findMany();
   } catch (err) {
     throw err;
   } finally {
