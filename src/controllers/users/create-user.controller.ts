@@ -1,7 +1,7 @@
 import { Response } from 'express';
 import { createUserModel } from 'models';
 
-import { CreateUserRequest } from './create-user.controller.types';
+import { CreateUserRequest } from './types';
 
 export const createUserController = async (req: CreateUserRequest, res: Response) => {
   try {
