@@ -1,11 +1,9 @@
-import { PrismaClient } from '@prisma/client';
+import { Products } from '@prisma/client';
+import { prismaClient } from 'db';
 
-import { CreateProductModelInput } from './types';
-const prisma = new PrismaClient();
-
-export const createProductModel = async ({ title, price, user_id }: CreateProductModelInput) => {
+export const createProductModel = async ({ title, price, user_id }: Pick<Products, 'title' | 'price' | 'user_id'>) => {
   try {
-    const product = await prisma.products.create({
+    const product = await prismaClient.products.create({
       data: {
         title,
         price,
@@ -16,7 +14,5 @@ export const createProductModel = async ({ title, price, user_id }: CreateProduc
     return product;
   } catch (err) {
     throw err;
-  } finally {
-    await prisma.$disconnect();
   }
 };

@@ -1,13 +1,9 @@
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { prismaClient } from 'db';
 
 export const getProductsModel = async () => {
   try {
-    return await prisma.products.findMany();
+    return await prismaClient.products.findMany();
   } catch (err) {
     throw err;
-  } finally {
-    await prisma.$disconnect();
   }
 };

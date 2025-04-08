@@ -1,12 +1,9 @@
-import { PrismaClient } from '@prisma/client';
+import { Products } from '@prisma/client';
+import { prismaClient } from 'db';
 
-import { UpdateProductInput } from './types';
-
-const prisma = new PrismaClient();
-
-export const updateProductModel = async ({ id, title, price }: UpdateProductInput) => {
+export const updateProductModel = async ({ id, title, price }: Pick<Products, 'title' | 'price'> & { id: number }) => {
   try {
-    const updatedProduct = await prisma.products.update({
+    const updatedProduct = await prismaClient.products.update({
       where: {
         id
       },
@@ -19,7 +16,5 @@ export const updateProductModel = async ({ id, title, price }: UpdateProductInpu
     return updatedProduct;
   } catch (err) {
     throw err;
-  } finally {
-    await prisma.$disconnect();
   }
 };
