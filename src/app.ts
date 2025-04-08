@@ -7,7 +7,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/api/v1/', routes);
+app.use('/v1/api/', routes);
 
 app.use(errorMiddleware);
 
