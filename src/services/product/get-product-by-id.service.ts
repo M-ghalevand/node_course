@@ -1,6 +1,6 @@
 import { CustomError } from 'utils';
 
-import { getProductByIdModel } from '../models';
+import { getProductByIdModel } from 'models';
 
 export const getProductByIdService = async (id: number) => {
   try {

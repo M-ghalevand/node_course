@@ -17,7 +17,7 @@ const swaggerSpec = swaggerJsdoc({
       }
     ]
   },
-  apis: ['./src/controllers/*.ts']
+  apis: ['./src/controllers/**/*.ts']
 });
 
 export function setupSwagger(app: Express) {

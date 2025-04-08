@@ -1,6 +1,6 @@
 import { CustomError } from 'utils';
 
-import { getUsersModel } from '../models';
+import { getUsersModel } from 'models';
 
 export const getAllUsersService = async () => {
   try {

@@ -1,7 +1,7 @@
 import { Products } from '@prisma/client';
 import { CustomError } from 'utils';
 
-import { updateProductModel } from '../models';
+import { updateProductModel } from 'models';
 
 export const updateProductService = async (body: Pick<Products, 'title' | 'price'>, id: number) => {
   try {

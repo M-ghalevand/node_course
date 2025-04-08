@@ -1,6 +1,6 @@
 import { CustomError } from 'utils';
 
-import { deleteProductModel } from '../models';
+import { deleteProductModel } from 'models';
 
 export const deleteProductService = async (id: number) => {
   try {

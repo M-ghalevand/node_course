@@ -1,7 +1,7 @@
 import { User } from '@prisma/client';
 import { CustomError } from 'utils';
 
-import { createUserModel } from '../models';
+import { createUserModel } from 'models';
 
 export const createUserService = async (body: Pick<User, 'email' | 'name'>) => {
   try {
