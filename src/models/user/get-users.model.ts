@@ -1,13 +1,9 @@
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+import { prismaClient } from 'db';
 
 export const getUsersModel = async () => {
   try {
-    return await prisma.user.findMany();
+    return await prismaClient.user.findMany();
   } catch (err) {
     throw err;
-  } finally {
-    await prisma.$disconnect();
   }
 };

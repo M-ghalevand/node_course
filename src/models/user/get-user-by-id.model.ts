@@ -1,9 +1,8 @@
-import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
+import { prismaClient } from 'db';
 
 export const getUserByIdModel = async (id: number) => {
   try {
-    const user = await prisma.user.findUnique({
+    const user = await prismaClient.user.findUnique({
       where: {
         id
       }
@@ -12,7 +11,5 @@ export const getUserByIdModel = async (id: number) => {
     return user;
   } catch (err) {
     throw err;
-  } finally {
-    await prisma.$disconnect();
   }
 };

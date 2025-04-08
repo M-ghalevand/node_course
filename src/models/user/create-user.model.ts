@@ -1,11 +1,9 @@
-import { PrismaClient } from '@prisma/client';
+import { User } from '@prisma/client';
+import { prismaClient } from 'db';
 
-import { CreateUserModelInput } from './types';
-const prisma = new PrismaClient();
-
-export const createUserModel = async ({ name, email }: CreateUserModelInput) => {
+export const createUserModel = async ({ name, email }: Pick<User, 'email' | 'name'>) => {
   try {
-    const user = await prisma.user.create({
+    const user = await prismaClient.user.create({
       data: {
         name,
         email
@@ -15,7 +13,5 @@ export const createUserModel = async ({ name, email }: CreateUserModelInput) => 
     return user;
   } catch (err) {
     throw err;
-  } finally {
-    await prisma.$disconnect();
   }
 };
