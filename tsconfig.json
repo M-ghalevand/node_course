@@ -18,7 +18,6 @@
       "controllers": ["./src/controllers"],
       "config": ["./src/config"],
       "validators": ["./src/validators"],
-      "schemas": ["./src/schemas"],
       "models": ["./src/models"]
     },
     "typeRoots": [
